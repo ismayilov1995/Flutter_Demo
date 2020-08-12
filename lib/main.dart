@@ -30,6 +30,8 @@ void main() {
         body: Center(
           child: Container(
             color: Colors.teal[50],
+            constraints: BoxConstraints(
+                maxHeight: 300, maxWidth: 300, minHeight: 200, minWidth: 200),
             child: Text(
               "Per petux",
               style: TextStyle(fontSize: 36),
