@@ -30,17 +30,20 @@ void main() {
           ),
         ),
         body: Container(
-          color: Colors.teal[50],
-          margin: EdgeInsets.all(20.0),
-          padding: EdgeInsets.only(top: 20, left: 30),
-          constraints: BoxConstraints.expand(
-            width: 400,
-            height: 400,
-          ),
-          child: Text(
-            "Per petux",
-            style: TextStyle(fontSize: 36),
-          ),
-        ),
+            color: Colors.teal[50],
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Expanded(
+                  child: Text('data'),
+                ),
+                Expanded(
+                  child: Icon(Icons.add_a_photo),
+                ),
+                Expanded(
+                  child: Icon(Icons.add_a_photo),
+                ),
+              ],
+            )),
       )));
 }
