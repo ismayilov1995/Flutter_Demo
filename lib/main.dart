@@ -19,97 +19,100 @@ void main() {
         ),
       ),
       body: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(2),
-                color: Colors.red[100],
-                child: Text(
-                  'D',
-                  style: TextStyle(fontSize: 26),
-                ),
+          Text(
+            'Image and Button types',
+            style: TextStyle(fontSize: 18),
+          ),
+          Expanded(
+            child: Container(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    alignment: Alignment.center,
+                    color: Colors.red[300],
+                    child: Column(
+                      children: [
+                        Image.asset("assets/images/icon.jpg"),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    alignment: Alignment.center,
+                    color: Colors.red[300],
+                    child: Column(
+                      children: [
+                        Image.network(
+                            "https://i.picsum.photos/id/942/200/200.jpg?hmac=Gh7W-H3ZGmweB9STLwQvq-IHkxrVyawHVTKYxy-u9mA"),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: NetworkImage("https://i.picsum.photos/id/980/200/200.jpg?hmac=6XJlc3jZzO4_ikuKGQFXIuERlW0eZx82q3xiC-b3Tso"),
+                          maxRadius: 50,
+                          minRadius: 25,
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(2),
-                color: Colors.red[200],
-                child: Text(
-                  'E',
-                  style: TextStyle(fontSize: 26),
-                ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    alignment: Alignment.center,
+                    color: Colors.red[300],
+                    child: Text(
+                      'D',
+                      style: TextStyle(fontSize: 26),
+                    ),
+                  ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    alignment: Alignment.center,
+                    color: Colors.red[300],
+                    child: Text(
+                      'D',
+                      style: TextStyle(fontSize: 26),
+                    ),
+                  ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    alignment: Alignment.center,
+                    color: Colors.red[300],
+                    child: Text(
+                      'D',
+                      style: TextStyle(fontSize: 26),
+                    ),
+                  ),
+                ],
               ),
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(2),
-                color: Colors.red[300],
-                child: Text(
-                  'M',
-                  style: TextStyle(fontSize: 26),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(2),
-                color: Colors.red[400],
-                child: Text(
-                  'O',
-                  style: TextStyle(fontSize: 26),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(2),
-            color: Colors.red[200],
-            child: Text(
-              'A',
-              style: TextStyle(fontSize: 26),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(2),
-            color: Colors.red[300],
-            child: Text(
-              'S',
-              style: TextStyle(fontSize: 26),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(2),
-            color: Colors.red[400],
-            child: Text(
-              'S',
-              style: TextStyle(fontSize: 26),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(2),
-            color: Colors.red[500],
-            child: Text(
-              'A',
-              style: TextStyle(fontSize: 26),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(2),
-            color: Colors.red[600],
-            child: Text(
-              'Q',
-              style: TextStyle(fontSize: 26),
-            ),
-          ),
+          )
         ],
       ),
     ),
