@@ -33,16 +33,12 @@ void main() {
             color: Colors.teal[50],
             child: Row(
               mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Expanded(
-                  child: Text('data'),
-                ),
-                Expanded(
-                  child: Icon(Icons.add_a_photo),
-                ),
-                Expanded(
-                  child: Icon(Icons.add_a_photo),
-                ),
+                Text('data'),
+                Icon(Icons.add_a_photo),
+                Icon(Icons.add_a_photo),
               ],
             )),
       )));
