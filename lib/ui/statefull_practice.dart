@@ -4,7 +4,10 @@ class StatefullPractice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.indigo),
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+          // textTheme: TextTheme(headline1: TextStyle(fontSize: 198))
+        ),
         title: "Material title",
         home: MyHomePage(title: "Home Page Sended"));
   }
@@ -18,11 +21,11 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return MyHomePageState();
+    return _MyHomePageState();
   }
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,30 +33,37 @@ class MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            increaseCounter();
-          });
-        },
+        onPressed: _increaseCounter,
         child: Icon(Icons.ac_unit),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Welcome to flutter you have pressed"),
             Text(
-              "${widget.counter}",
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+              "Welcome to flutter you have pressed",
+              style: Theme.of(context).textTheme.headline6,
             ),
+            Text("${widget.counter}",
+                style: Theme.of(context).textTheme.headline1.copyWith(
+                    color: widget.counter < 0 ? Colors.red : Colors.indigo)),
             Text("times"),
-            RaisedButton(
-              onPressed: () {
-                setState(() {
-                  decreaseCounter();
-                });
-              },
-              child: Text('Decrease'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.indeterminate_check_box),
+                  color: Colors.red,
+                  iconSize: 36,
+                  onPressed: _decreaseCounter,
+                ),
+                IconButton(
+                  icon: Icon(Icons.add_box),
+                  color: Colors.indigo,
+                  iconSize: 36,
+                  onPressed: _increaseCounter,
+                ),
+              ],
             )
           ],
         ),
@@ -61,11 +71,15 @@ class MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void increaseCounter() {
-    widget.counter++;
+  void _increaseCounter() {
+    setState(() {
+      widget.counter++;
+    });
   }
 
-  void decreaseCounter() {
-    widget.counter--;
+  void _decreaseCounter() {
+    setState(() {
+      widget.counter--;
+    });
   }
 }
