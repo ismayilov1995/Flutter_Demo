@@ -6,11 +6,11 @@ class AficionListSamples extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    fetchStudents();
+    _fetchStudents();
     return ListView.separated(
         separatorBuilder: (context, index) {
           if (index % 9 == 0 && index != 0) {
-            return AdPlace();
+            return _AdPlace();
           } else {
             return Divider();
           }
@@ -32,29 +32,80 @@ class AficionListSamples extends StatelessWidget {
                     ? Icon(Icons.lock_open)
                     : Icon(Icons.wifi),
                 onLongPress: () {
-                  debugPrint(allStudents[index]._name);
+                  _showAlertDialog(context, allStudents[index]);
+                  _showToast(allStudents[index], isLong: true);
                 },
-                onTap: () => onTap(allStudents[index]),
+                onTap: () => _onTap(allStudents[index]),
               ),
             ));
   }
 
-  void fetchStudents() {
+  void _fetchStudents() {
     allStudents = List.generate(
         300,
         (index) => Student("Ismayil $index", "ismayil$index@mail.ru",
             index % 2 == 0 ? true : false));
   }
 
-  void onTap(Student selectedStudent) {
+  void _onTap(Student selectedStudent) {
+    _showToast(selectedStudent);
+  }
+
+  void _showToast(Student selectedStudent, {bool isLong = false}) {
     Fluttertoast.cancel();
     Fluttertoast.showToast(
-        msg: selectedStudent._name,
+        msg: selectedStudent.toString(),
         toastLength: Toast.LENGTH_LONG,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
+        backgroundColor: isLong ? Colors.red : Colors.indigo,
         textColor: Colors.white,
         fontSize: 16.0);
+  }
+
+  void _showAlertDialog(BuildContext context, Student selectedStudent) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) {
+          return AlertDialog(
+            title: Text("Alert Dialog Title"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: [
+                  Text(selectedStudent.toString() +
+                      "\nLorem impsum bla bla blyat idi suda\nMene baxma"),
+                  Icon(Icons.map),
+                  Text(
+                      'You can modify the cards widget to create an application that will look like the below example app')
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              ButtonBar(
+                mainAxisSize: MainAxisSize.max,
+                alignment: MainAxisAlignment.start,
+                children: [
+                  FlatButton(
+                    child: Text("Cancel"),
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text(
+                      "Delete",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.red,
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                    },
+                  )
+                ],
+              ),
+            ],
+          );
+        });
   }
 }
 
@@ -64,9 +115,14 @@ class Student {
   bool _gender;
 
   Student(this._name, this._email, this._gender);
+
+  @override
+  String toString() {
+    return "Choosen student name: $_name \nemail: $_email";
+  }
 }
 
-class OptionButton extends StatelessWidget {
+class _OptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -102,7 +158,7 @@ class OptionButton extends StatelessWidget {
   }
 }
 
-class AdPlace extends StatelessWidget {
+class _AdPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
