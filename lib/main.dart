@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helloflutter/ui/aficion_samples.dart';
 import 'ui/list_demos.dart';
 import 'ui/statefull_practice.dart';
 import 'ui/MyApp.dart';
@@ -16,6 +17,6 @@ void main() => runApp(
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            body: ListDemos(),
+            body: AficionListSamples(),
           )),
     );
