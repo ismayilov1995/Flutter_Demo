@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AppGridView extends StatelessWidget {
   @override
@@ -9,45 +10,54 @@ class AppGridView extends StatelessWidget {
       itemCount: 100,
       itemBuilder: (BuildContext context, int index) {
         int shade = 100 * ((index + 1) % 8);
-        return Container(
-          alignment: Alignment.bottomCenter,
-          margin: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            // color: Colors.teal[shade],
-            gradient: LinearGradient(
-              colors: [Colors.orange, Colors.yellow],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+        return GestureDetector(
+          onHorizontalDragStart: (double) => debugPrint('sallam $double'),
+          onDoubleTap: () {
+            Fluttertoast.cancel();
+            Fluttertoast.showToast(
+                msg: 'Hello',
+                toastLength: Toast.LENGTH_SHORT,
+                backgroundColor: Colors.indigo);
+          },
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              // color: Colors.teal[shade],
+              gradient: LinearGradient(
+                colors: [Colors.orange, Colors.yellow],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              image: DecorationImage(
+                  image: AssetImage("assets/images/icon.jpg"),
+                  alignment: Alignment.topCenter,
+                  colorFilter: ColorFilter.mode(
+                      Colors.orange[shade], BlendMode.multiply),
+                  fit: BoxFit.cover),
+              // border: Border.all(
+              //    width: 5, color: Colors.indigo, style: BorderStyle.solid),
+              border: Border(
+                  top: BorderSide(width: 5, color: Colors.indigo),
+                  bottom: BorderSide(width: 5, color: Colors.grey)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(6.0, 6.0),
+                  blurRadius: 6.0,
+                )
+              ],
             ),
-            image: DecorationImage(
-                image: AssetImage("assets/images/icon.jpg"),
-                alignment: Alignment.topCenter,
-                colorFilter:
-                    ColorFilter.mode(Colors.orange[shade], BlendMode.multiply),
-                fit: BoxFit.cover),
-            // border: Border.all(
-            //    width: 5, color: Colors.indigo, style: BorderStyle.solid),
-            border: Border(
-                top: BorderSide(width: 5, color: Colors.indigo),
-                bottom: BorderSide(width: 5, color: Colors.grey)),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                offset: Offset(6.0, 6.0),
-                blurRadius: 6.0,
-              )
-            ],
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "Hello flutter $index",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "Hello flutter $index",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         );
