@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -18,13 +19,55 @@ class AppCollapsableToolbar extends StatelessWidget {
           ),
           pinned: true,
         ),
-        SliverList(
-          delegate: SliverChildListDelegate(staticListItems()),
+        SliverPadding(
+          padding: EdgeInsets.all(10),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate(staticListItems()),
+          ),
         ),
-        SliverList(
-          delegate:
-              SliverChildBuilderDelegate(_dynamicElementBuilder, childCount: 6),
-        )
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(_dynamicElementBuilder,
+                childCount: 6),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+          sliver: SliverFixedExtentList(
+            delegate: SliverChildBuilderDelegate(_dynamicElementBuilder,
+                childCount: 6),
+            itemExtent: 300,
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(_dynamicElementBuilder,
+                childCount: 6),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(_dynamicElementBuilder,
+                childCount: 6),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                crossAxisSpacing: 10, maxCrossAxisExtent: 100),
+          ),
+        ),
+        SliverGrid.count(
+          crossAxisCount: 4,
+          children: staticListItems(),
+        ),
+        SliverGrid.extent(
+          maxCrossAxisExtent: 100,
+          children: staticListItems(),
+        ),
       ],
     );
   }
@@ -100,7 +143,13 @@ class AppCollapsableToolbar extends StatelessWidget {
   Widget _dynamicElementBuilder(BuildContext context, int index) {
     return Container(
       height: 100,
-      color: randomColor(),
+      margin: EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: randomColor(),
+          boxShadow: [
+            BoxShadow(color: Colors.grey, offset: Offset(1, 3), blurRadius: 2)
+          ]),
       child: FlutterLogo(
         colors: Colors.grey,
         style: FlutterLogoStyle.stacked,
