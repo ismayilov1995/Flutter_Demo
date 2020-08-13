@@ -155,8 +155,43 @@ void main() {
               ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                RaisedButton(
+                  child: Text("Tapla"),
+                  onPressed: () {},
+                ),
+                RaisedButton(
+                  child: Text("Tapla meni taplayim seni"),
+                  elevation: 10,
+                  textColor: Colors.white,
+                  color: Colors.orange,
+                  onPressed: () => debugPrint('Uzun oglan'),
+                ),
+                RaisedButton(
+                  child: Text("Cucuk"),
+                  elevation: 0,
+                  textColor: Colors.white,
+                  color: Colors.indigo,
+                  onPressed: onCucukPressed,
+                ),
+                IconButton(
+                  icon: Icon(Icons.call),
+                  onPressed: () {},
+                  iconSize: 32,
+                )
+              ],
+            ),
+          )
         ],
       ),
     ),
   ));
+}
+
+void onCucukPressed() {
+  debugPrint("Cucuk is pressed");
 }
