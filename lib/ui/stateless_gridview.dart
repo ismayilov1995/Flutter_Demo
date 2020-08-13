@@ -30,10 +30,7 @@ class AppGridView extends StatelessWidget {
             border: Border(
                 top: BorderSide(width: 5, color: Colors.indigo),
                 bottom: BorderSide(width: 5, color: Colors.grey)),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-            ),
+            shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,
