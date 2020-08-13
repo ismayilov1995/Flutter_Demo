@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AficionListSamples extends StatelessWidget {
   List<Student> allStudents = [];
@@ -33,6 +34,7 @@ class AficionListSamples extends StatelessWidget {
                 onLongPress: () {
                   debugPrint(allStudents[index]._name);
                 },
+                onTap: () => onTap(allStudents[index]),
               ),
             ));
   }
@@ -42,6 +44,16 @@ class AficionListSamples extends StatelessWidget {
         300,
         (index) => Student("Ismayil $index", "ismayil$index@mail.ru",
             index % 2 == 0 ? true : false));
+  }
+
+  void onTap(Student selectedStudent) {
+    Fluttertoast.showToast(
+        msg: selectedStudent._name,
+        toastLength: Toast.LENGTH_LONG,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
   }
 }
 
