@@ -117,10 +117,14 @@ void main() {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.network(
-                            "https://i.picsum.photos/id/942/200/200.jpg?hmac=Gh7W-H3ZGmweB9STLwQvq-IHkxrVyawHVTKYxy-u9mA"),
+                        FlutterLogo(
+                          size: 60,
+                          colors: Colors.orange,
+                          style: FlutterLogoStyle.horizontal,
+                          textColor: Colors.black,
+                        ),
                         Text(
-                          'Salam',
+                          'Flutter Logo',
                           style: TextStyle(fontSize: 16),
                         )
                       ],
@@ -134,13 +138,14 @@ void main() {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://i.picsum.photos/id/980/200/200.jpg?hmac=6XJlc3jZzO4_ikuKGQFXIuERlW0eZx82q3xiC-b3Tso"),
-                          radius: 46,
+                        Expanded(
+                          child: Placeholder(
+                            color: Colors.blueGrey,
+                            strokeWidth: 2.0,
+                          ),
                         ),
                         Text(
-                          'Salam',
+                          'Placehohlder widget',
                           style: TextStyle(fontSize: 16),
                         )
                       ],
