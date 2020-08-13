@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class AppCollapsableToolbar extends StatelessWidget {
   @override
@@ -19,6 +20,10 @@ class AppCollapsableToolbar extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildListDelegate(staticListItems()),
+        ),
+        SliverList(
+          delegate:
+              SliverChildBuilderDelegate(_dynamicElementBuilder, childCount: 6),
         )
       ],
     );
@@ -90,5 +95,22 @@ class AppCollapsableToolbar extends StatelessWidget {
         ),
       ),
     ];
+  }
+
+  Widget _dynamicElementBuilder(BuildContext context, int index) {
+    return Container(
+      height: 100,
+      color: randomColor(),
+      child: FlutterLogo(
+        colors: Colors.grey,
+        style: FlutterLogoStyle.stacked,
+        textColor: Colors.white,
+      ),
+    );
+  }
+
+  Color randomColor() {
+    return Color.fromARGB(255, math.Random().nextInt(255),
+        math.Random().nextInt(255), math.Random().nextInt(255));
   }
 }
