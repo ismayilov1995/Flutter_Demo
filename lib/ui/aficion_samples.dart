@@ -9,8 +9,8 @@ class AficionListSamples extends StatelessWidget {
     fetchStudents();
     return ListView.separated(
         separatorBuilder: (context, index) {
-          if (index % 4 == 0 && index != 0) {
-            return OptionButton();
+          if (index % 9 == 0 && index != 0) {
+            return AdPlace();
           } else {
             return Divider();
           }
@@ -47,6 +47,7 @@ class AficionListSamples extends StatelessWidget {
   }
 
   void onTap(Student selectedStudent) {
+    Fluttertoast.cancel();
     Fluttertoast.showToast(
         msg: selectedStudent._name,
         toastLength: Toast.LENGTH_LONG,
@@ -97,6 +98,20 @@ class OptionButton extends StatelessWidget {
           onPressed: () {},
         ),
       ],
+    );
+  }
+}
+
+class AdPlace extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      alignment: Alignment.center,
+      child: Text(
+        "Your add here",
+        style: Theme.of(context).textTheme.headline4,
+      ),
     );
   }
 }

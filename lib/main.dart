@@ -12,10 +12,17 @@ void main() => runApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             appBar: AppBar(
-              title: Text(
-                'List demos',
-                style: TextStyle(color: Colors.white),
-              ),
+              title: Row(children: [
+                Icon(
+                  Icons.touch_app,
+                  color: Colors.white,
+                  size: 36,
+                ),
+                Text(
+                  'List demos',
+                  style: TextStyle(color: Colors.white),
+                )
+              ]),
             ),
             body: AficionListSamples(),
           )),
