@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:helloflutter/views/about.dart';
 import 'package:helloflutter/views/contact.dart';
+import 'package:helloflutter/views/profile.dart';
 
 class AppNavigation extends StatelessWidget {
   String title = "Contacts";
@@ -38,6 +39,21 @@ class AppNavigation extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Contact(title)));
+                },
+              ),
+              RaisedButton(
+                child: Text(
+                  'Go Profile',
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.deepOrange,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Profile("Profile"),
+                    ),
+                  );
                 },
               ),
             ],
