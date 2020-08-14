@@ -7,7 +7,7 @@ import 'package:helloflutter/views/contact.dart';
 import 'package:helloflutter/views/profile.dart';
 
 class AppNavigation extends StatelessWidget {
-  String title = "Contacts";
+  final String title = "Contacts";
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +130,7 @@ class AppList extends StatelessWidget {
               child: Text('List item $index'),
             )),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ListDetails(index)));
+              Navigator.pushNamed(context, '/detail/$index');
             },
           );
         },
@@ -142,7 +141,7 @@ class AppList extends StatelessWidget {
 }
 
 class ListDetails extends StatelessWidget {
-  int selectedItem = 0;
+  final int selectedItem = 0;
 
   ListDetails(this.selectedItem);
 

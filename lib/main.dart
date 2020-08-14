@@ -17,7 +17,14 @@ void main() => runApp(
           '/test': (context) => TestPage("Test"),
           '/list': (context) => AppList(),
         },
-//        onGenerateRoute: ,
+        onGenerateRoute: (settings) {
+          List<String> pathMembers = settings.name.split("/");
+          if (pathMembers[1] == "detail") {
+            return MaterialPageRoute(
+                builder: (context) => ListDetails(int.parse(pathMembers[2])));
+          }
+          return null;
+        },
         onUnknownRoute: (RouteSettings settings) =>
             MaterialPageRoute(builder: (context) => AppNavigation()),
         theme: ThemeData(primarySwatch: Colors.orange),
