@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:helloflutter/views/about.dart';
 import 'package:helloflutter/views/contact.dart';
 import 'package:helloflutter/views/profile.dart';
@@ -56,8 +59,68 @@ class AppNavigation extends StatelessWidget {
                   );
                 },
               ),
+              FlatButton(
+                child: Text(
+                  'Go Test',
+                  style: TextStyle(color: Colors.indigo),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TestPage("Test")))
+                      .then(popResponse);
+                },
+              ),
             ],
           ),
         ));
+  }
+
+  FutureOr popResponse(value) {
+    debugPrint(value);
+  }
+}
+
+class TestPage extends StatelessWidget {
+  final String title;
+
+  TestPage(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () {
+        debugPrint("on will pop");
+        Navigator.pop(context, "Data from will pop scope");
+        return Future.value(false);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: Center(
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '$title Page',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.pop(context, "Data from Test"),
+                  child: Icon(
+                    Icons.school,
+                    color: Colors.indigo,
+                    size: 76,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
