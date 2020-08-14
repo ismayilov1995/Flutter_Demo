@@ -16,6 +16,8 @@ void main() => runApp(
           '/profile': (context) => Profile("Profile"),
           '/test': (context) => TestPage("Test"),
         },
+        onUnknownRoute: (RouteSettings settings) =>
+            MaterialPageRoute(builder: (context) => AppNavigation()),
         theme: ThemeData(primarySwatch: Colors.orange),
         debugShowCheckedModeBanner: false,
       ),

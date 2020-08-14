@@ -85,6 +85,15 @@ class AppNavigation extends StatelessWidget {
                       ));
                 },
               ),
+              FlatButton(
+                child: Text(
+                  'Wrong route',
+                  style: TextStyle(color: Colors.grey),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/wrong');
+                },
+              ),
             ],
           ),
         ));
