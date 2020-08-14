@@ -15,7 +15,9 @@ void main() => runApp(
           '/contact': (context) => Contact("Contacts"),
           '/profile': (context) => Profile("Profile"),
           '/test': (context) => TestPage("Test"),
+          '/list': (context) => AppList(),
         },
+//        onGenerateRoute: ,
         onUnknownRoute: (RouteSettings settings) =>
             MaterialPageRoute(builder: (context) => AppNavigation()),
         theme: ThemeData(primarySwatch: Colors.orange),

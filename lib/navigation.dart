@@ -59,6 +59,16 @@ class AppNavigation extends StatelessWidget {
                   );
                 },
               ),
+              RaisedButton(
+                child: Text(
+                  'Go List',
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.deepOrange,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/list');
+                },
+              ),
               FlatButton(
                 child: Text(
                   'Go Test',
@@ -101,6 +111,49 @@ class AppNavigation extends StatelessWidget {
 
   FutureOr popResponse(value) {
     debugPrint(value);
+  }
+}
+
+class AppList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("User list"),
+      ),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            child: Center(
+                child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text('List item $index'),
+            )),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ListDetails(index)));
+            },
+          );
+        },
+        itemCount: 50,
+      ),
+    );
+  }
+}
+
+class ListDetails extends StatelessWidget {
+  int selectedItem = 0;
+
+  ListDetails(this.selectedItem);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Detail list"),
+      ),
+      body: Center(child: Text('Selected item $selectedItem')),
+    );
   }
 }
 
