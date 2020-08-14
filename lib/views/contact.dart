@@ -28,6 +28,9 @@ class Contact extends StatelessWidget {
                   size: 76,
                 ),
               ),
+              RaisedButton(
+                  child: Text("Go About"),
+                  onPressed: () => Navigator.pushNamed(context, '/about'))
             ],
           ),
         ),
